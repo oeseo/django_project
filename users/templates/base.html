@@ -1,0 +1,60 @@
+{% load static %} <!-- Загрузка статических файлов в базовом шаблоне -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мое приложение</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Мое приложение</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'add_user' %}">Добавить пользователя</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'add_position' %}">Добавить должность</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users_list' %}">Список пользователей</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'positions_list' %}">Список должностей</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    Привет, admin!
+                    <a href="/accounts/logout/" class="btn btn-outline-secondary btn-sm ms-2">Выйти</a>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Отображение сообщений -->
+    <div class="container mt-4">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }} mt-2">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Подключение Bootstrap JS -->
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

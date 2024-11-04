@@ -1,0 +1,9 @@
+<label for="{{ widget.attrs.id }}">
+    {{ widget.tag }}
+    {% if widget.value != 'False' and widget.value != False %}
+        <i class="bi bi-check-circle-fill text-success"></i>
+    {% else %}
+        <i class="bi bi-x-circle-fill text-danger"></i>
+    {% endif %}
+    {{ widget.label }}
+</label>

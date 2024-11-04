@@ -1,0 +1,7 @@
+<ul class="list-unstyled">
+    {% for group, options, group_index in widget.optgroups %}
+        {% for option in options %}
+            {% include option.template_name %}
+        {% endfor %}
+    {% endfor %}
+</ul>

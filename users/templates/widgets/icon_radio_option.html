@@ -1,0 +1,12 @@
+<li class="form-check">
+    <input type="radio" id="{{ option.id_for_label }}" name="{{ widget.name }}" value="{{ option.value }}" {% if option.selected %}checked{% endif %} class="form-check-input">
+    <label class="form-check-label" for="{{ option.id_for_label }}">
+        {% if option.value == 'True' %}
+            <i class="bi bi-check-circle-fill text-success"></i> Да
+        {% elif option.value == 'False' %}
+            <i class="bi bi-x-circle-fill text-danger"></i> Нет
+        {% else %}
+            {{ option.label }}
+        {% endif %}
+    </label>
+</li>

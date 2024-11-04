@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Список должностей</h2>
+    {% if positions %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Название должности</th>
+                <th>Действия</th> <!-- Добавлен столбец для действий -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for position in positions %}
+            <tr>
+                <td>{{ position.name }}</td>
+                <td>
+                    <a href="{% url 'delete_position' position.id %}" class="btn btn-danger btn-sm">Удалить</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Нет должностей для отображения.</p>
+    {% endif %}
+</div>
+{% endblock %}
